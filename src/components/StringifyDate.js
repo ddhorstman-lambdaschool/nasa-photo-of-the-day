@@ -1,12 +1,13 @@
-/** Create a date string based on the PHP "date" function. https://www.php.net/manual/en/function.date.php
+/** Format a given Date to a string representation based on a format string.
+ * Based on the PHP "date" function.
  * Not supported: Week-numbering, Swatch Time, microseconds, Timezones, Full Date/Time.
  *
- * @param {Date} date A javascript Date object
+ * @param {Date} date A Date object
  * @param {string} formatString A string specifing the format of the output.
  * See https://www.php.net/manual/en/function.date.php for details on recognized characters.
  * @returns {string} A string representing the date/time.
  */
-function stringifyDate(date, formatString) {
+export default function stringifyDate(date, formatString) {
   const dayNames = [
     "Sunday",
     "Monday",
@@ -59,7 +60,7 @@ function stringifyDate(date, formatString) {
             ) - 1
           );
         case "W":
-          return "Week number not supported";
+          return "W"; //: Week number not supported";
         case "F":
           return monthNames[date.getMonth()];
         case "m":
@@ -71,7 +72,7 @@ function stringifyDate(date, formatString) {
         case "n":
           return date.getMonth() + 1;
         case "t":
-          return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+          return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
         case "L":
           const year = date.getFullYear();
           if (year % 4 !== 0) return 0;
@@ -79,7 +80,7 @@ function stringifyDate(date, formatString) {
           if (year % 100 === 0) return 0;
           return 1;
         case "o":
-          return "Week-numbered year not supported";
+          return "o"; //: Week-numbered year not supported";
         case "Y":
           return date.getFullYear();
         case "y":
@@ -92,7 +93,7 @@ function stringifyDate(date, formatString) {
         case "A":
           return date.getHours() < 12 ? "AM" : "PM";
         case "B":
-          return "Swatch internet time not supported";
+          return "B"; //: Swatch internet time not supported";
         case "g":
           return date.getHours() === 0 ? 12 : date.getHours() % 12;
         case "G":
@@ -114,25 +115,25 @@ function stringifyDate(date, formatString) {
             ? "0" + date.getSeconds().toString()
             : date.getSeconds();
         case "u":
-          return "Microseconds not supported";
+          return "u"; //: Microseconds not supported";
         case "v":
           return date.getMilliseconds();
         case "e":
-          return "Timezone not supported";
+          return "e"; //: Timezone not supported";
         case "I":
-          return "Timezone not supported";
+          return "I"; //: Timezone not supported";
         case "O":
-          return "Timezone not supported";
+          return "O"; //: Timezone not supported";
         case "P":
-          return "Timezone not supported";
+          return "P"; //: Timezone not supported";
         case "T":
-          return "Timezone not supported";
+          return "T"; //: Timezone not supported";
         case "Z":
-          return "Timezone not supported";
+          return "Z"; //: Timezone not supported";
         case "c":
-          return "Full date strings not supported";
+          return "c"; //: Full date strings not supported";
         case "r":
-          return "Full date strings not supported";
+          return "r"; //: Full date strings not supported";
         case "U":
           return date.getTime();
         default:
@@ -141,4 +142,3 @@ function stringifyDate(date, formatString) {
     })
     .reduce((ac, val) => ac + val.toString(), "");
 }
-export default stringifyDate;
