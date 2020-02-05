@@ -1,5 +1,5 @@
 /** Create a date string based on the PHP "date" function.
- * Not supported: z, W, t, o, B, u, and timezones.
+ * Not supported: Week-numbering, Swatch Time, microseconds, Timezones.
  *
  * @param {Date} date A javascript Date object
  * @param {string} formatString A string specifing the format of the output.
@@ -52,7 +52,12 @@ function stringifyDate(date, formatString) {
         case "w":
           return date.getDay();
         case "z":
-          return "z not implemented yet";
+          return (
+            Math.floor(
+              (date - new Date(date.getFullYear(), 0, 0)) /
+                (1000 * 60 * 60 * 24)
+            ) - 1
+          );
         case "W":
           return "Week number not supported";
         case "F":
@@ -66,7 +71,7 @@ function stringifyDate(date, formatString) {
         case "n":
           return date.getMonth() + 1;
         case "t":
-          return "t not implemented yet";
+          return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
         case "L":
           const year = date.getFullYear();
           if (year % 4 !== 0) return 0;
@@ -112,6 +117,24 @@ function stringifyDate(date, formatString) {
           return "Microseconds not supported";
         case "v":
           return date.getMilliseconds();
+        case "e":
+          return "Timezone not supported";
+        case "I":
+          return "Timezone not supported";
+        case "O":
+          return "Timezone not supported";
+        case "P":
+          return "Timezone not supported";
+        case "T":
+          return "Timezone not supported";
+        case "Z":
+          return "Timezone not supported";
+        case "c":
+          return "Full date strings not supported";
+        case "r":
+          return "Full date strings not supported";
+        case "U":
+          return date.getTime();
         default:
           return char;
       }

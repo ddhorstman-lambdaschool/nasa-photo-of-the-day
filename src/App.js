@@ -6,7 +6,7 @@ import stringifyDate from "./components/StringifyDate";
 import "./App.css";
 
 function App() {
-  const currentDate = new Date(Date.now());
+  const currentDate = new Date();
   let [date, setDate] = useState(stringifyDate(currentDate, "Y-m-d"));
   const [apodData, setApodData] = useState({
     date: "",
