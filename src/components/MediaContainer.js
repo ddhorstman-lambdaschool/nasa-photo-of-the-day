@@ -1,7 +1,11 @@
 import React from "react";
 export default props => {
   if (props.type === "image") return <img src={props.url} alt="APOD" />;
-  if (props.type === "video")
+  if (props.type === "video") {
+    const videoID = props.url.slice(
+      props.url.indexOf("embed") + 6,
+      props.url.indexOf("?")
+    );
     return (
       <iframe
         width="560"
@@ -10,8 +14,11 @@ export default props => {
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; full-screen"
         title={props.title}
         allowFullScreen
-        src={`${props.url}&autoplay=1`}
+        src={`${
+          props.url
+        }&autoplay=1&controls=0&loop=1&modestbranding=1&playlist=${videoID}&showinfo=0`}
       />
     );
+  }
   return <div />;
 };
