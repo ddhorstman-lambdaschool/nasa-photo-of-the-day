@@ -1,5 +1,5 @@
-/** Create a date string based on the PHP "date" function.
- * Not supported: Week-numbering, Swatch Time, microseconds, Timezones.
+/** Create a date string based on the PHP "date" function. https://www.php.net/manual/en/function.date.php
+ * Not supported: Week-numbering, Swatch Time, microseconds, Timezones, Full Date/Time.
  *
  * @param {Date} date A javascript Date object
  * @param {string} formatString A string specifing the format of the output.
