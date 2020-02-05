@@ -54,7 +54,7 @@ function stringifyDate(date, formatString) {
         case "z":
           return "z not implemented yet";
         case "W":
-          return "W not implemented yet";
+          return "Week number not supported";
         case "F":
           return monthNames[date.getMonth()];
         case "m":
@@ -71,10 +71,10 @@ function stringifyDate(date, formatString) {
           const year = date.getFullYear();
           if (year % 4 !== 0) return 0;
           if (year % 400 === 0) return 1;
-          if (year % 100 == 0) return 0;
+          if (year % 100 === 0) return 0;
           return 1;
         case "o":
-          return "o not implemented yet";
+          return "Week-numbered year not supported";
         case "Y":
           return date.getFullYear();
         case "y":
@@ -87,7 +87,7 @@ function stringifyDate(date, formatString) {
         case "A":
           return date.getHours() < 12 ? "AM" : "PM";
         case "B":
-          return "B not implemented yet";
+          return "Swatch internet time not supported";
         case "g":
           return date.getHours() === 0 ? 12 : date.getHours() % 12;
         case "G":
@@ -109,7 +109,7 @@ function stringifyDate(date, formatString) {
             ? "0" + date.getSeconds().toString()
             : date.getSeconds();
         case "u":
-          return "u not implemented yet";
+          return "Microseconds not supported";
         case "v":
           return date.getMilliseconds();
         default:
