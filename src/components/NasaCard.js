@@ -20,7 +20,7 @@ export default function NasaCard(props) {
         <CardHeader tag="h3">{title}</CardHeader>
         <CardBody>
           <MediaContainer type={media_type} url={url} title={title} />
-          <CardText>{explanation}</CardText>
+          <CardText className="text-left">{explanation}</CardText>
         </CardBody>
       </Card>
     </div>
