@@ -9,8 +9,8 @@ export default props => {
     );
     return (
       <iframe
-        width="560"
-        height="315"
+        width={window.innerWidth * 0.65}
+        height={(window.innerWidth * 0.65 * 315) / 560}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; full-screen"
         title={props.title}
