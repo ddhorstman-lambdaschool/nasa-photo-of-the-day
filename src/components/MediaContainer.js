@@ -1,6 +1,7 @@
 import React from "react";
+import { CardImg } from "reactstrap";
 export default props => {
-  if (props.type === "image") return <img src={props.url} alt="APOD" />;
+  if (props.type === "image") return <CardImg src={props.url} alt="APOD" />;
   if (props.type === "video") {
     const videoID = props.url.slice(
       props.url.indexOf("embed") + 6,

@@ -1,18 +1,33 @@
 import React from "react";
-import { Button } from "reactstrap";
-export default function DatePicker({ date, setDate }) {
+import { ButtonGroup, Button } from "reactstrap";
+import stringifyDate from "./StringifyDate";
+
+export default function DatePicker({ isLoading, currentDate, date, setDate }) {
   return (
     <div>
-      <Button
-        onClick={() => setDate(new Date(date.getTime() - 1000 * 60 * 60 * 24))}
-      >
-        Previous
-      </Button>{" "}
-      <Button
-        onClick={() => setDate(new Date(date.getTime() + 1000 * 60 * 60 * 24))}
-      >
-        Next
-      </Button>
+      <ButtonGroup>
+        <Button
+          disabled={isLoading}
+          color="primary"
+          onClick={() =>
+            setDate(new Date(date.getTime() - 1000 * 60 * 60 * 24))
+          }
+        >
+          Previous
+        </Button>
+        <Button
+          color="primary"
+          disabled={
+            isLoading ||
+            stringifyDate(date, "Y-m-d") === stringifyDate(currentDate, "Y-m-d")
+          }
+          onClick={() =>
+            setDate(new Date(date.getTime() + 1000 * 60 * 60 * 24))
+          }
+        >
+          Next
+        </Button>
+      </ButtonGroup>
     </div>
   );
 }
