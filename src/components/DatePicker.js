@@ -1,32 +1,33 @@
 import React from "react";
-import { ButtonGroup, Button } from "reactstrap";
+import { ButtonGroup, Button, Spinner } from "reactstrap";
 import stringifyDate from "./StringifyDate";
 
 export default function DatePicker({ isLoading, currentDate, date, setDate }) {
   return (
     <div>
-      <ButtonGroup>
+      <ButtonGroup style={{ margin: "10px" }}>
         <Button
-          disabled={isLoading}
           color="primary"
           onClick={() =>
             setDate(new Date(date.getTime() - 1000 * 60 * 60 * 24))
           }
         >
-          Previous
+          {isLoading ? <Spinner size="sm" /> : "Previous"}
         </Button>
-        <Button
-          color="primary"
-          disabled={
-            isLoading ||
-            stringifyDate(date, "Y-m-d") === stringifyDate(currentDate, "Y-m-d")
-          }
-          onClick={() =>
-            setDate(new Date(date.getTime() + 1000 * 60 * 60 * 24))
-          }
-        >
-          Next
-        </Button>
+        {isLoading || (
+          <Button
+            color="primary"
+            disabled={
+              stringifyDate(date, "Y-m-d") ===
+              stringifyDate(currentDate, "Y-m-d")
+            }
+            onClick={() =>
+              setDate(new Date(date.getTime() + 1000 * 60 * 60 * 24))
+            }
+          >
+            Next
+          </Button>
+        )}
       </ButtonGroup>
     </div>
   );
