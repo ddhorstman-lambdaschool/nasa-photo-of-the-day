@@ -38,7 +38,7 @@ function App() {
   }, [date]);
   return (
     <div className="App">
-      <NasaCard data={apodData}>
+      <NasaCard isLoading={isLoading} data={apodData}>
         <DatePicker
           isLoading={isLoading}
           currentDate={currentDate}
