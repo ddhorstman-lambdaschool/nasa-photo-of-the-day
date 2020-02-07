@@ -8,8 +8,8 @@ export default function NasaCard(props) {
   return (
     <div>
       <Header title={"Astronomy Photo of the Day"} />
-      {props.children} <br />
-      <Card style={{ width: "80%", margin: "auto" }}>
+      {props.children}
+      <Card style={{ width: "80%", margin: "10px auto 0px" }}>
         <CardHeader tag="h3">{title}</CardHeader>
         <CardBody>
           <MediaContainer type={media_type} url={url} title={title} />
